@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panjat Pinang IPS VII - Kegiatan Ekonomi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'cheerful-soft': '0 20px 40px -15px rgba(251, 191, 36, 0.4), 0 10px 25px -10px rgba(52, 211, 153, 0.4)',
+                        'glow-mint': '0 10px 25px -4px rgba(52, 211, 153, 0.5)',
+                        'glow-sunshine': '0 10px 25px -4px rgba(251, 191, 36, 0.5)',
+                        'glow-sky': '0 10px 25px -4px rgba(56, 189, 248, 0.5)',
+                        'glow-magenta': '0 10px 25px -4px rgba(244, 63, 94, 0.5)',
+                        'glow-violet': '0 10px 25px -4px rgba(167, 139, 250, 0.5)',
+                        'card-pop': '0 18px 35px -5px rgba(15, 23, 42, 0.08), 0 8px 15px -6px rgba(15, 23, 42, 0.05)',
+                        'bouncy-button': '0 8px 0px 0px currentColor'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #f0fdf4;
+            color: #0f172a;
+            min-height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Bright Cheerful Economic Mesh Gradient Background */
+        .bg-cheerful-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at 10% 15%, rgba(254, 240, 138, 0.65) 0%, transparent 40%),
+                radial-gradient(circle at 90% 20%, rgba(167, 243, 208, 0.7) 0%, transparent 45%),
+                radial-gradient(circle at 50% 85%, rgba(224, 231, 255, 0.75) 0%, transparent 50%),
+                radial-gradient(circle at 85% 80%, rgba(251, 207, 232, 0.6) 0%, transparent 45%),
+                linear-gradient(135deg, #f0fdf4 0%, #fef3c7 50%, #e0f2fe 100%);
+        }
+
+        /* Floating Economic Particles */
+        .floating-particle {
+            position: absolute;
+            opacity: 0.7;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.06));
+            animation: floatParticle 6.5s ease-in-out infinite;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-18px) rotate(10deg) scale(1.08); }
+        }
+
+        /* Cheerful Glassmorphism UI */
+        .glass-panel-cheerful {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2.5px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+        }
+
+        .glass-card-cheerful {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            border: 2px solid rgba(226, 232, 240, 0.85);
+            box-shadow: 0 12px 28px -6px rgba(148, 163, 184, 0.15);
+        }
+
+        .btn-press {
+            transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .btn-press:active {
+            transform: translateY(3px) scale(0.97);
+        }
+
+        /* Pole & Climber Smooth Physics */
+        .climber-anim {
+            transition: bottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.2s ease;
+        }
+
+        .bamboo-texture {
+            background: linear-gradient(90deg, #15803d 0%, #22c55e 35%, #16a34a 70%, #14532d 100%);
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.3), 0 4px 15px rgba(34, 197, 94, 0.25);
+        }
+
+        .wiggle {
+            animation: wiggleAnim 0.45s ease-in-out;
+        }
+
+        @keyframes wiggleAnim {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px) rotate(-3deg); }
+            50% { transform: translateX(10px) rotate(3deg); }
+            75% { transform: translateX(-5px) rotate(-1deg); }
+        }
+
+        .bounce-up {
+            animation: bounceUpAnim 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes bounceUpAnim {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03) translateY(-6px); }
+            100% { transform: scale(1); }
+        }
+
+        .svg-container svg {
+            width: 100%;
+            height: 100%;
+            max-height: 125px;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-2 md:p-4 min-h-screen text-slate-800 antialiased selection:bg-amber-300 selection:text-slate-900">
+
+    <div class="bg-cheerful-mesh"></div>
+
+    <!-- Floating Graphic Particles -->
+    <div class="floating-particle text-3xl md:text-4xl" style="top: 7%; left: 5%; animation-delay: 0s;">🛒</div>
+    <div class="floating-particle text-3xl md:text-4xl" style="top: 80%; left: 4%; animation-delay: 2s;">🏭</div>
+    <div class="floating-particle text-3xl md:text-4xl" style="top: 10%; right: 6%; animation-delay: 1.2s;">🚚</div>
+    <div class="floating-particle text-3xl md:text-4xl" style="top: 75%; right: 5%; animation-delay: 3.2s;">💰</div>
+    <div class="floating-particle text-3xl md:text-4xl" style="top: 45%; left: 2%; animation-delay: 2.2s;">📦</div>
+
+    <div id="app" class="w-full max-w-6xl min-h-[92vh] flex flex-col justify-between relative z-10 my-auto">
+
+        <!-- 1️⃣ HALAMAN PEMILIHAN TOPIK KEGIATAN EKONOMI -->
+        <div id="screen-operation" class="flex-1 flex flex-col items-center justify-center text-center p-2 md:p-3 my-auto">
+            <div class="glass-panel-cheerful rounded-[40px] p-5 md:p-8 max-w-3xl w-full flex flex-col items-center shadow-cheerful-soft">
+                
+                <!-- Main Header Badge -->
+                <div class="mb-4 flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-tr from-amber-300 via-emerald-300 to-teal-400 rounded-3xl flex items-center justify-center shadow-glow-sunshine mb-3 border-4 border-white ring-8 ring-amber-200/50 animate-bounce">
+                        <span class="text-4xl md:text-5xl">🛒</span>
+                    </div>
+                    <div class="bg-gradient-to-r from-amber-500 to-emerald-600 text-white font-extrabold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider mb-2 shadow-sm">
+                        🌿 IPS Kelas VII • Kegiatan Ekonomi
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-black bg-gradient-to-r from-emerald-600 via-amber-600 to-teal-600 bg-clip-text text-transparent drop-shadow-sm tracking-tight">
+                        Panjat Pinang Ekonomi
+                    </h1>
+                    <p class="text-xs md:text-sm text-slate-600 font-bold mt-1">Produksi, Distribusi, Konsumsi & Pasar Harta Keseimbangan</p>
+                </div>
+
+                <!-- Game Mode Switcher (2 Players vs Bot AI) -->
+                <div class="bg-slate-200/70 p-1.5 rounded-2xl flex mb-5 w-full max-w-xs border border-white shadow-inner">
+                    <button id="btn-mode-vs" onclick="setPlayMode('vs')" class="flex-1 py-2 px-4 rounded-xl font-black text-xs md:text-sm transition-all bg-gradient-to-r from-amber-300 to-emerald-400 text-slate-900 shadow-md">
+                        👥 2 Pemain
+                    </button>
+                    <button id="btn-mode-ai" onclick="setPlayMode('ai')" class="flex-1 py-2 px-4 rounded-xl font-bold text-xs md:text-sm transition-all text-slate-500 hover:text-slate-800">
+                        🤖 vs Bot AI
+                    </button>
+                </div>
+
+                <!-- 5 Main Topics Selection Buttons -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full">
+                    
+                    <!-- Topik 1: Produksi -->
+                    <button onclick="selectTopic('produksi')" class="btn-press bg-gradient-to-r from-amber-300 via-emerald-400 to-teal-400 hover:brightness-105 text-slate-900 rounded-[28px] p-4 flex items-center justify-between border-2 border-white shadow-glow-sunshine text-left">
+                        <div class="flex items-center space-x-3.5">
+                            <span class="w-12 h-12 bg-white/40 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-white/60 shadow-sm">🏭</span>
+                            <div>
+                                <div class="text-base font-extrabold text-slate-900">1. Kegiatan Produksi</div>
+                                <div class="text-xs text-slate-800 font-semibold opacity-90">Produsen & Faktor-Faktor Produksi</div>
+                            </div>
+                        </div>
+                        <span class="text-xl text-slate-900 font-black shrink-0 ml-2">➔</span>
+                    </button>
+
+                    <!-- Topik 2: Distribusi -->
+                    <button onclick="selectTopic('distribusi')" class="btn-press bg-gradient-to-r from-sky-300 via-teal-400 to-emerald-400 hover:brightness-105 text-slate-900 rounded-[28px] p-4 flex items-center justify-between border-2 border-white shadow-glow-sky text-left">
+                        <div class="flex items-center space-x-3.5">
+                            <span class="w-12 h-12 bg-white/40 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-white/60 shadow-sm">🚚</span>
+                            <div>
+                                <div class="text-base font-extrabold text-slate-900">2. Kegiatan Distribusi</div>
+                                <div class="text-xs text-slate-800 font-semibold opacity-90">Distributor, Transportasi & E-Commerce</div>
+                            </div>
+                        </div>
+                        <span class="text-xl text-slate-900 font-black shrink-0 ml-2">➔</span>
+                    </button>
+
+                    <!-- Topik 3: Konsumsi -->
+                    <button onclick="selectTopic('konsumsi')" class="btn-press bg-gradient-to-r from-rose-300 via-pink-400 to-rose-400 hover:brightness-105 text-slate-900 rounded-[28px] p-4 flex items-center justify-between border-2 border-white shadow-glow-magenta text-left">
+                        <div class="flex items-center space-x-3.5">
+                            <span class="w-12 h-12 bg-white/40 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-white/60 shadow-sm">🛍️</span>
+                            <div>
+                                <div class="text-base font-extrabold text-slate-900">3. Kegiatan Konsumsi</div>
+                                <div class="text-xs text-slate-800 font-semibold opacity-90">Konsumen, Skala Prioritas & Kebutuhan</div>
+                            </div>
+                        </div>
+                        <span class="text-xl text-slate-900 font-black shrink-0 ml-2">➔</span>
+                    </button>
+
+                    <!-- Topik 4: Pasar & Harga Keseimbangan -->
+                    <button onclick="selectTopic('pasar')" class="btn-press bg-gradient-to-r from-purple-300 via-violet-400 to-indigo-400 hover:brightness-105 text-slate-900 rounded-[28px] p-4 flex items-center justify-between border-2 border-white shadow-glow-violet text-left">
+                        <div class="flex items-center space-x-3.5">
+                            <span class="w-12 h-12 bg-white/40 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-white/60 shadow-sm">⚖️</span>
+                            <div>
+                                <div class="text-base font-extrabold text-slate-900">4. Pasar & Harga Pasar</div>
+                                <div class="text-xs text-slate-800 font-semibold opacity-90">Permintaan, Penawaran & Harga Pasar</div>
+                            </div>
+                        </div>
+                        <span class="text-xl text-slate-900 font-black shrink-0 ml-2">➔</span>
+                    </button>
+
+                    <!-- Topik 5: Campuran Semua Topik Ekonomi -->
+                    <button onclick="selectTopic('campuran')" class="btn-press sm:col-span-2 bg-gradient-to-r from-amber-300 via-emerald-400 to-sky-400 hover:brightness-105 text-slate-900 rounded-[28px] p-4 flex items-center justify-between border-2 border-white shadow-cheerful-soft text-left">
+                        <div class="flex items-center space-x-3.5">
+                            <span class="w-12 h-12 bg-white/40 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl shrink-0 border border-white/60 shadow-sm">💼</span>
+                            <div>
+                                <div class="text-base font-black text-slate-900">5. Semua Materi Ekonomi (Mixed Master)</div>
+                                <div class="text-xs text-slate-800 font-bold opacity-90">Kombinasi Soal Teks IPS Kegiatan Ekonomi + Diagram & Tebak Gambar Lengkap</div>
+                            </div>
+                        </div>
+                        <span class="text-xl text-slate-900 font-black shrink-0 ml-2">➔</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2️⃣ HALAMAN PILIH LEVEL KESULITAN -->
+        <div id="screen-level" class="hidden flex-1 flex flex-col items-center justify-center text-center p-2 md:p-3 my-auto">
+            <div class="glass-panel-cheerful rounded-[40px] p-6 md:p-8 max-w-lg w-full flex flex-col items-center shadow-cheerful-soft relative">
+                
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-1">Pilih Level Kesulitan</h2>
+                <div class="inline-block bg-emerald-100 text-emerald-800 border border-emerald-300 font-extrabold px-4 py-1.5 rounded-full text-xs md:text-sm mb-3 shadow-sm">
+                    Materi: <span id="selected-op-label" class="font-black text-emerald-900">Kegiatan Produksi</span>
+                </div>
+                <p class="text-xs text-amber-800 font-bold mb-5 bg-amber-100/90 px-3 py-1.5 rounded-2xl border border-amber-300 shadow-sm">
+                    🖼️ Setiap level menyajikan kombinasi Soal Pemahaman & Tebak Gambar Ekonomi Lengkap!
+                </p>
+
+                <div class="flex flex-col gap-3.5 w-full">
+                    <!-- Pemula / Beginner (1 Star) -->
+                    <button onclick="selectLevel('pemula')" class="btn-press bg-gradient-to-r from-emerald-300 to-teal-400 hover:brightness-105 text-slate-900 rounded-[24px] p-4 flex items-center justify-between border-2 border-white shadow-glow-mint">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-3xl">⭐</span>
+                            <div class="text-left">
+                                <div class="text-lg font-black text-slate-900">Pemula (Beginner)</div>
+                                <div class="text-xs text-slate-800 font-bold">Pengertian Dasar Produksi, Konsumsi, Distribusi & Pasar</div>
+                            </div>
+                        </div>
+                        <span class="text-xs font-black bg-white/60 px-3 py-1 rounded-full border border-white">Level 1</span>
+                    </button>
+
+                    <!-- Menengah / Amateur (2 Stars) -->
+                    <button onclick="selectLevel('menengah')" class="btn-press bg-gradient-to-r from-amber-300 to-orange-400 hover:brightness-105 text-slate-900 rounded-[24px] p-4 flex items-center justify-between border-2 border-white shadow-glow-sunshine">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-3xl">⭐⭐</span>
+                            <div class="text-left">
+                                <div class="text-lg font-black text-slate-900">Menengah (Amateur)</div>
+                                <div class="text-xs text-slate-800 font-bold">Faktor Produksi, Saluran Distribusi & Skala Prioritas</div>
+                            </div>
+                        </div>
+                        <span class="text-xs font-black bg-white/60 px-3 py-1 rounded-full border border-white">Level 2</span>
+                    </button>
+
+                    <!-- Mahir / Pro (3 Stars) -->
+                    <button onclick="selectLevel('mahir')" class="btn-press bg-gradient-to-r from-purple-300 to-indigo-400 hover:brightness-105 text-slate-900 rounded-[24px] p-4 flex items-center justify-between border-2 border-white shadow-glow-violet">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-3xl">⭐⭐⭐</span>
+                            <div class="text-left">
+                                <div class="text-lg font-black text-slate-900">Mahir (Pro)</div>
+                                <div class="text-xs text-slate-800 font-bold">Hukum Permintaan-Penawaran, Harga Keseimbangan & E-Commerce</div>
+                            </div>
+                        </div>
+                        <span class="text-xs font-black bg-white/60 px-3 py-1 rounded-full border border-white">Level 3</span>
+                    </button>
+                </div>
+
+                <!-- Back Button -->
+                <button onclick="showScreen('screen-operation')" class="mt-6 px-6 py-2 bg-slate-200/80 text-slate-700 hover:bg-slate-300 rounded-full font-black border border-slate-300 shadow-sm flex items-center gap-2 transition-all text-xs">
+                    <span>←</span> Kembali ke Topik
+                </button>
+            </div>
+        </div>
+
+        <!-- 3️⃣ HALAMAN GAMEPLAY PANJAT PINANG CERIA -->
+        <div id="screen-gameplay" class="hidden flex-1 flex flex-col justify-between p-1 md:p-2">
+            
+            <!-- Top Navigation / Status Header -->
+            <div class="flex items-center justify-between bg-white/90 backdrop-blur-xl rounded-2xl px-4 py-2 shadow-sm border border-slate-200 mb-2">
+                <button onclick="showScreen('screen-level')" class="text-xs font-black text-slate-700 hover:text-slate-900 flex items-center gap-1 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-300">
+                    <span>←</span> Level
+                </button>
+                <div class="text-center font-black text-emerald-800 text-xs md:text-sm flex items-center gap-2">
+                    <span class="animate-bounce">🛒</span> <span id="game-info-text">IPS VII - Kegiatan Ekonomi (Pemula)</span>
+                </div>
+                <button onclick="resetGame()" class="text-xs font-black bg-amber-100 text-amber-800 hover:bg-amber-200 px-3.5 py-1.5 rounded-xl border border-amber-300">
+                    🔄 Reset
+                </button>
+            </div>
+
+            <!-- Main Dual Climbing Arena Grid -->
+            <div class="grid grid-cols-12 gap-2 md:gap-3 flex-1 items-stretch">
+                
+                <!-- Player 1 Control Panel (Left) -->
+                <div id="p1-card" class="col-span-12 lg:col-span-4 glass-card-cheerful rounded-[32px] p-3 flex flex-col justify-between border-2 border-rose-300 shadow-card-pop">
+                    <!-- Player P1 Header Badge -->
+                    <div class="flex items-center justify-between bg-gradient-to-r from-rose-400 to-pink-500 text-slate-900 rounded-2xl p-2 px-3.5 shadow-sm border border-white">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl">🎒</span>
+                            <span id="p1-name-label" class="font-black text-xs md:text-sm">Pemain 1 (Merah)</span>
+                        </div>
+                        <span id="p1-score-tag" class="bg-white/80 text-rose-800 font-black px-2.5 py-0.5 rounded-full text-xs shadow-sm">Panjat: 0/7</span>
+                    </div>
+
+                    <!-- Question Container P1 -->
+                    <div class="my-2 text-center flex-1 flex flex-col justify-center">
+                        <div class="text-[10px] font-black text-slate-500 mb-1 uppercase tracking-widest flex items-center justify-center gap-1">
+                            <span>SOAL IPS EKONOMI VII</span>
+                            <span id="p1-badge-type" class="bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.2 rounded-full text-[9px] font-extrabold">Tebak Gambar/Teks</span>
+                        </div>
+                        <div id="p1-question-box" class="bg-slate-50/90 rounded-2xl p-3 border border-slate-200 shadow-inner flex flex-col items-center justify-center min-h-[145px]">
+                            <!-- SVG Graphic Container for Image Question -->
+                            <div id="p1-img-container" class="svg-container w-full max-w-[165px] mb-1 hidden flex items-center justify-center drop-shadow-sm"></div>
+                            <div id="p1-question" class="text-xs md:text-sm font-bold text-slate-800 leading-snug">
+                                Memuat soal Kegiatan Ekonomi Kelas VII...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 Multiple Choice Option Buttons P1 (A, B, C, D) -->
+                    <div id="p1-options-container" class="grid grid-cols-1 gap-1.5 my-1">
+                        <!-- Dynamic Options Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Center Pole Climbing Arena (Nature-Park Cheerful Aesthetic) -->
+                <div class="col-span-12 lg:col-span-4 bg-gradient-to-b from-amber-100/90 via-emerald-100/70 to-emerald-200/90 rounded-[32px] p-2 md:p-3 flex flex-col items-center justify-between border-2 border-emerald-300 shadow-cheerful-soft relative min-h-[380px] overflow-hidden">
+                    
+                    <!-- Tops of Poles: Flag and Golden Ring with Gifts -->
+                    <div class="w-full flex flex-col items-center z-10 pt-1">
+                        <!-- Fluttering Flag Merah Putih -->
+                        <div class="flex items-center justify-center mb-1">
+                            <div class="w-10 h-7 rounded border-2 border-white shadow-md flex flex-col overflow-hidden animate-bounce">
+                                <div class="h-1/2 bg-red-600"></div>
+                                <div class="h-1/2 bg-white"></div>
+                            </div>
+                        </div>
+
+                        <!-- Golden Ring Hadiah (Interactive Prizes Bar) -->
+                        <div class="w-full max-w-[270px] bg-white/90 backdrop-blur-md rounded-full py-1.5 px-3 border-2 border-amber-300 flex justify-around items-center text-xl shadow-glow-sunshine relative">
+                            <span title="Laptop Belajar" class="hover:scale-125 transition-transform cursor-pointer">💻</span>
+                            <span title="Sepeda" class="hover:scale-125 transition-transform cursor-pointer">🚲</span>
+                            <span title="Gitar Akustik" class="hover:scale-125 transition-transform cursor-pointer">🎸</span>
+                            <span title="Trophy Emas Ekonomi" class="hover:scale-125 transition-transform cursor-pointer">🏆</span>
+                            <span title="Kado Misteri" class="hover:scale-125 transition-transform cursor-pointer">🎁</span>
+                        </div>
+                    </div>
+
+                    <!-- Dual Bamboo Poles & Climber Avatars -->
+                    <div class="flex-1 w-full flex justify-around items-end relative px-4 my-2">
+                        
+                        <!-- Pole Track 1 (Red Player) -->
+                        <div class="relative flex flex-col items-center h-full justify-end w-16">
+                            <!-- Textured Bamboo Pole -->
+                            <div class="w-7 h-full bamboo-texture rounded-t-lg border-x border-green-800 shadow-inner relative flex flex-col justify-between py-2">
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                            </div>
+                            
+                            <!-- Climber Avatar P1 -->
+                            <div id="climber-1" class="climber-anim absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center z-20" style="bottom: 0%;">
+                                <div class="bg-rose-500 text-white font-black text-[9px] px-2 py-0.5 rounded-full shadow-md mb-0.5 whitespace-nowrap border border-white">
+                                    P1
+                                </div>
+                                <div class="w-12 h-14 relative drop-shadow-md">
+                                    <svg viewBox="0 0 100 120" class="w-full h-full">
+                                        <path d="M30 40 L70 40 L65 80 L35 80 Z" fill="#f43f5e" />
+                                        <path d="M35 80 L65 80 L65 95 L35 95 Z" fill="#1e3a8a" />
+                                        <circle cx="50" cy="25" r="18" fill="#fca5a5" />
+                                        <path d="M32 20 Q50 5 68 20 Q50 12 32 20 Z" fill="#451a03" />
+                                        <circle cx="25" cy="45" r="7" fill="#fca5a5" />
+                                        <circle cx="75" cy="45" r="7" fill="#fca5a5" />
+                                        <circle cx="35" cy="102" r="6" fill="#000" />
+                                        <circle cx="65" cy="102" r="6" fill="#000" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pole Track 2 (Blue/AI Player) -->
+                        <div class="relative flex flex-col items-center h-full justify-end w-16">
+                            <!-- Textured Bamboo Pole -->
+                            <div class="w-7 h-full bamboo-texture rounded-t-lg border-x border-green-800 shadow-inner relative flex flex-col justify-between py-2">
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                                <div class="w-full h-1 bg-black/30"></div>
+                            </div>
+
+                            <!-- Climber Avatar P2 / AI -->
+                            <div id="climber-2" class="climber-anim absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center z-20" style="bottom: 0%;">
+                                <div id="climber-2-label" class="bg-sky-500 text-white font-black text-[9px] px-2 py-0.5 rounded-full shadow-md mb-0.5 whitespace-nowrap border border-white">
+                                    P2
+                                </div>
+                                <div class="w-12 h-14 relative drop-shadow-md">
+                                    <svg viewBox="0 0 100 120" class="w-full h-full">
+                                        <path d="M30 40 L70 40 L65 80 L35 80 Z" fill="#0284c7" />
+                                        <path d="M35 80 L65 80 L65 95 L35 95 Z" fill="#b91c1c" />
+                                        <circle cx="50" cy="25" r="18" fill="#fef08a" />
+                                        <path d="M30 22 Q50 8 70 22 Q50 15 30 22 Z" fill="#1e1b4b" />
+                                        <circle cx="25" cy="45" r="7" fill="#fef08a" />
+                                        <circle cx="75" cy="45" r="7" fill="#fef08a" />
+                                        <circle cx="35" cy="102" r="6" fill="#000" />
+                                        <circle cx="65" cy="102" r="6" fill="#000" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Base Platform Footer -->
+                    <div class="w-full bg-white/90 rounded-full py-1 border border-emerald-300 flex justify-center items-center shadow-sm">
+                        <span class="text-[10px] text-emerald-800 font-extrabold tracking-wider uppercase">🌱 Rumput Basah & Garis Start 🌱</span>
+                    </div>
+                </div>
+
+                <!-- Player 2 Control Panel (Right) -->
+                <div id="p2-card" class="col-span-12 lg:col-span-4 glass-card-cheerful rounded-[32px] p-3 flex flex-col justify-between border-2 border-sky-300 shadow-card-pop">
+                    <!-- Player P2 Header Badge -->
+                    <div class="flex items-center justify-between bg-gradient-to-r from-sky-400 to-blue-500 text-slate-900 rounded-2xl p-2 px-3.5 shadow-sm border border-white">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl" id="p2-avatar-icon">🎒</span>
+                            <span id="p2-name-label" class="font-black text-xs md:text-sm">Pemain 2 (Biru)</span>
+                        </div>
+                        <span id="p2-score-tag" class="bg-white/80 text-sky-800 font-black px-2.5 py-0.5 rounded-full text-xs shadow-sm">Panjat: 0/7</span>
+                    </div>
+
+                    <!-- Question Container P2 -->
+                    <div class="my-2 text-center flex-1 flex flex-col justify-center">
+                        <div class="text-[10px] font-black text-slate-500 mb-1 uppercase tracking-widest flex items-center justify-center gap-1">
+                            <span>SOAL IPS EKONOMI VII</span>
+                            <span id="p2-badge-type" class="bg-sky-100 text-sky-800 border border-sky-300 px-2 py-0.2 rounded-full text-[9px] font-extrabold">Tebak Gambar/Teks</span>
+                        </div>
+                        <div id="p2-question-box" class="bg-slate-50/90 rounded-2xl p-3 border border-slate-200 shadow-inner flex flex-col items-center justify-center min-h-[145px]">
+                            <!-- SVG Graphic Container for Image Question -->
+                            <div id="p2-img-container" class="svg-container w-full max-w-[165px] mb-1 hidden flex items-center justify-center drop-shadow-sm"></div>
+                            <div id="p2-question" class="text-xs md:text-sm font-bold text-slate-800 leading-snug">
+                                Memuat soal Kegiatan Ekonomi Kelas VII...
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 Multiple Choice Option Buttons P2 (A, B, C, D) -->
+                    <div id="p2-options-container" class="grid grid-cols-1 gap-1.5 my-1">
+                        <!-- Dynamic Options Injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Instructional Helper -->
+            <div class="mt-2 text-center bg-white/90 backdrop-blur-md rounded-full py-1.5 px-4 border border-emerald-300 text-emerald-900 font-bold text-xs shadow-sm">
+                🌿 Jawab soal Kegiatan Ekonomi dengan benar untuk memanjat! Kumpulkan 7 poin untuk meraih hadiah di puncak tiang! 🏆
+            </div>
+        </div>
+
+        <!-- 4️⃣ HALAMAN AKHIR (WINNER MODAL) -->
+        <div id="screen-winner" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center p-4">
+            <div class="glass-panel-cheerful rounded-[40px] p-6 md:p-8 shadow-cheerful-soft max-w-lg w-full flex flex-col items-center text-center border-4 border-amber-300 animate-bounce-up max-h-[90vh] overflow-y-auto">
+                
+                <div class="text-5xl md:text-6xl mb-1 animate-bounce">🏆</div>
+                <h2 class="text-3xl md:text-4xl font-black bg-gradient-to-r from-amber-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                    JUARA KEGIATAN EKONOMI!
+                </h2>
+                <p id="winner-announcement" class="text-2xl md:text-3xl font-black text-slate-900 mt-1 mb-3">
+                    Pemain 1 Menang!
+                </p>
+
+                <!-- Winner Gift Bag Badge -->
+                <div class="bg-amber-100 rounded-2xl p-3 border border-amber-300 mb-3 flex items-center gap-3 w-full justify-center">
+                    <span class="text-3xl">🎁</span>
+                    <div class="text-left">
+                        <div class="text-xs font-black text-amber-900">Hadiah Puncak Pemenang Berhasil Diambil!</div>
+                        <div class="text-[11px] text-slate-700 font-bold">Berhasil menjawab 7 soal Kegiatan Ekonomi (Produksi, Distribusi, Konsumsi, Pasar)</div>
+                    </div>
+                </div>
+
+                <!-- Educational Summary Box -->
+                <div class="bg-white/90 rounded-2xl p-3.5 border border-slate-300 text-left mb-5 w-full text-slate-800 shadow-sm">
+                    <div class="text-xs font-black text-emerald-700 uppercase tracking-widest mb-1 flex items-center gap-1">
+                        <span>📚</span> Ringkasan Konsep Ekonomi IPS VII:
+                    </div>
+                    <p id="educational-summary" class="text-xs text-slate-700 leading-relaxed font-semibold">
+                        Kegiatan ekonomi meliputi Produksi (menghasilkan barang/jasa), Distribusi (menyalurkan produk), dan Konsumsi (menggunakan nilai guna barang), serta diatur oleh Hukum Permintaan dan Penawaran di Pasar.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 w-full">
+                    <button onclick="resetGame()" class="btn-press flex-1 bg-gradient-to-r from-amber-300 to-emerald-400 hover:brightness-105 text-slate-900 font-black text-sm py-3 px-4 rounded-2xl shadow-glow-sunshine border-2 border-white">
+                        🔄 Main Lagi
+                    </button>
+                    <button onclick="showScreen('screen-operation')" class="btn-press flex-1 bg-gradient-to-r from-purple-300 to-indigo-400 hover:brightness-105 text-slate-900 font-black text-sm py-3 px-4 rounded-2xl shadow-glow-violet border-2 border-white">
+                        🏠 Beranda
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* Vector SVG Assets for "Tebak Gambar Kegiatan Ekonomi" Questions */
+        const SVG_ASSETS = {
+            pabrik_produksi: `<svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="130" rx="16" fill="#FEF3C7"/>
+                <path d="M30 95 L30 55 L60 70 L60 55 L90 70 L90 40 L130 40 L130 95 Z" fill="#F59E0B" stroke="#B45309" stroke-width="2.5"/>
+                <rect x="140" y="30" width="16" height="65" fill="#78350F"/>
+                <path d="M148 25 Q155 15, 165 20 Q175 10, 185 20" stroke="#92400E" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <rect x="42" y="75" width="12" height="12" fill="#FEF3C7"/>
+                <rect x="70" y="75" width="12" height="12" fill="#FEF3C7"/>
+                <rect x="100" y="55" width="15" height="15" fill="#FEF3C7"/>
+                <text x="100" y="118" fill="#78350F" font-size="10" font-weight="800" text-anchor="middle">Mengolah Bahan Mentah → Barang Jadi</text>
+            </svg>`,
+
+            truk_distribusi: `<svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="130" rx="16" fill="#E0F2FE"/>
+                <rect x="25" y="45" width="90" height="45" rx="6" fill="#38BDF8" stroke="#0284C7" stroke-width="2.5"/>
+                <path d="M115 55 L145 55 L160 70 L160 90 L115 90 Z" fill="#0284C7" stroke="#0369A1" stroke-width="2.5"/>
+                <circle cx="55" cy="90" r="10" fill="#1E293B" stroke="#FFF" stroke-width="2"/>
+                <circle cx="138" cy="90" r="10" fill="#1E293B" stroke="#FFF" stroke-width="2"/>
+                <text x="70" y="72" fill="#0369A1" font-size="16" font-weight="bold" text-anchor="middle">📦🚚</text>
+                <text x="100" y="118" fill="#075985" font-size="10" font-weight="800" text-anchor="middle">Menyalurkan Barang Produsen → Konsumen</text>
+            </svg>`,
+
+            keranjang_konsumsi: `<svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="130" rx="16" fill="#FFE4E6"/>
+                <path d="M50 45 L150 45 L135 90 L65 90 Z" fill="#FB7185" stroke="#E11D48" stroke-width="2.5"/>
+                <path d="M70 45 C70 25, 130 25, 130 45" stroke="#BE123C" stroke-width="3.5" fill="none"/>
+                <circle cx="80" cy="55" r="12" fill="#FDE047"/>
+                <circle cx="110" cy="55" r="14" fill="#4ADE80"/>
+                <rect x="90" y="48" width="20" height="25" rx="3" fill="#60A5FA"/>
+                <text x="100" y="118" fill="#9F1239" font-size="10" font-weight="800" text-anchor="middle">Mengurangi Nilai Guna Barang / Jasa</text>
+            </svg>`,
+
+            kurir_ecommerce: `<svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="130" rx="16" fill="#ECFDF5"/>
+                <rect x="70" y="25" width="60" height="85" rx="10" fill="#34D399" stroke="#059669" stroke-width="2.5"/>
+                <rect x="76" y="35" width="48" height="58" rx="5" fill="#FFFFFF"/>
+                <text x="100" y="62" fill="#047857" font-size="18" font-weight="bold" text-anchor="middle">📱🛒</text>
+                <rect x="130" y="60" width="35" height="30" rx="5" fill="#FBBF24" stroke="#D97706" stroke-width="2"/>
+                <text x="147" y="80" fill="#78350F" font-size="10" font-weight="bold" text-anchor="middle">📦</text>
+                <text x="100" y="121" fill="#065F46" font-size="10" font-weight="800" text-anchor="middle">Distribusi Digital & E-Commerce</text>
+            </svg>`,
+
+            kurva_pasar: `<svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="130" rx="16" fill="#F3E8FF"/>
+                <line x1="35" y1="20" x2="35" y2="95" stroke="#6B21A8" stroke-width="2.5"/>
+                <line x1="35" y1="95" x2="175" y2="95" stroke="#6B21A8" stroke-width="2.5"/>
+                <line x1="45" y1="30" x2="160" y2="85" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
+                <line x1="45" y1="85" x2="160" y2="30" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="102.5" cy="57.5" r="5" fill="#10B981"/>
+                <text x="25" y="22" fill="#581C87" font-size="8" font-weight="bold">P</text>
+                <text x="175" y="105" fill="#581C87" font-size="8" font-weight="bold">Q</text>
+                <text x="102.5" y="48" fill="#065F46" font-size="9" font-weight="800" text-anchor="middle">Titik Keseimbangan (E)</text>
+                <text x="100" y="118" fill="#6B21A8" font-size="9.5" font-weight="800" text-anchor="middle">Permintaan (D) & Penawaran (S)</text>
+            </svg>`,
+
+            timbangan_harga: `<svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="130" rx="16" fill="#FEF2F2"/>
+                <rect x="92" y="35" width="16" height="60" fill="#64748B"/>
+                <rect x="60" y="95" width="80" height="12" rx="4" fill="#334155"/>
+                <line x1="40" y1="45" x2="160" y2="45" stroke="#475569" stroke-width="4"/>
+                <path d="M40 45 L25 70 L55 70 Z" fill="#FCA5A5" stroke="#DC2626" stroke-width="2"/>
+                <path d="M160 45 L145 70 L175 70 Z" fill="#93C5FD" stroke="#2563EB" stroke-width="2"/>
+                <text x="40" y="85" fill="#991B1B" font-size="8.5" font-weight="bold" text-anchor="middle">Penjual</text>
+                <text x="160" y="85" fill="#1E40AF" font-size="8.5" font-weight="bold" text-anchor="middle">Pembeli</text>
+                <text x="100" y="118" fill="#991B1B" font-size="10" font-weight="800" text-anchor="middle">Kesepakatan Harga Pasar (Keseimbangan)</text>
+            </svg>`,
+
+            skala_prioritas: `<svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="130" rx="16" fill="#F0FDF4"/>
+                <path d="M100 20 L165 95 L35 95 Z" fill="#86EFAC" stroke="#16A34A" stroke-width="2.5"/>
+                <line x1="55" y1="70" x2="145" y2="70" stroke="#15803D" stroke-width="2"/>
+                <line x1="75" y1="45" x2="125" y2="45" stroke="#15803D" stroke-width="2"/>
+                <text x="100" y="38" fill="#14532D" font-size="8" font-weight="800" text-anchor="middle">Primer (Utama)</text>
+                <text x="100" y="60" fill="#14532D" font-size="8" font-weight="800" text-anchor="middle">Sekunder (Pelengkap)</text>
+                <text x="100" y="85" fill="#14532D" font-size="8" font-weight="800" text-anchor="middle">Tersier (Mewah)</text>
+                <text x="100" y="118" fill="#15803D" font-size="10" font-weight="800" text-anchor="middle">Skala Prioritas Kebutuhan Manusia</text>
+            </svg>`,
+
+            pertanian_primer: `<svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="130" rx="16" fill="#ECFDF5"/>
+                <path d="M20 95 Q60 70, 100 95 T180 95 L180 105 L20 105 Z" fill="#A7F3D0" stroke="#059669" stroke-width="2"/>
+                <circle cx="100" cy="40" r="16" fill="#FDE047"/>
+                <path d="M60 80 Q65 60, 70 80" stroke="#047857" stroke-width="3" fill="none"/>
+                <path d="M100 80 Q105 55, 110 80" stroke="#047857" stroke-width="3" fill="none"/>
+                <path d="M140 80 Q145 60, 150 80" stroke="#047857" stroke-width="3" fill="none"/>
+                <text x="100" y="118" fill="#065F46" font-size="10" font-weight="800" text-anchor="middle">Faktor Produksi Alam (Sektor Ekstraktif/Agraris)</text>
+            </svg>`
+        };
+    </script>
+
+    <script>
+        /* Comprehensive Question Bank for IPS Kelas VII - Kegiatan Ekonomi */
+        const QUESTION_LEVELS = {
+            pemula: [ // ⭐ LEVEL 1: PEMULA (Basics of Production, Distribution, Consumption, Market)
+                {
+                    q: "Kegiatan menciptakan atau menambah nilai guna suatu barang dan jasa untuk memenuhi kebutuhan disebut...",
+                    options: ["Produksi", "Distribusi", "Konsumsi", "Investasi"],
+                    answer: 0,
+                    summary: "Produksi adalah kegiatan ekonomi yang menghasilkan barang/jasa baru atau menambah nilai guna barang."
+                },
+                {
+                    svgKey: "pabrik_produksi",
+                    q: "Berdasarkan gambar di atas, kegiatan mengolah bahan mentah menjadi barang jadi di pabrik dinamakan...",
+                    options: ["Kegiatan Produksi", "Kegiatan Distribusi", "Kegiatan Konsumsi", "Kegiatan Asuransi"],
+                    answer: 0,
+                    summary: "Pabrik mengolah bahan mentah (kapas/kayu) menjadi barang jadi (pakaian/meja) sebagai bagian kegiatan produksi."
+                },
+                {
+                    q: "Pihak atau orang yang melakukan kegiatan menggunakan dan menghabiskan nilai guna barang/jasa disebut...",
+                    options: ["Konsumen", "Produsen", "Distributor", "Negosiator"],
+                    answer: 0,
+                    summary: "Konsumen adalah pelaku ekonomi yang menggunakan atau mengonsumsi barang dan jasa."
+                },
+                {
+                    svgKey: "keranjang_konsumsi",
+                    q: "Gambar di atas menggambarkan aktivitas manusia saat membeli kebutuhan harian di supermarket yang termasuk...",
+                    options: ["Kegiatan Konsumsi", "Kegiatan Produksi", "Kegiatan Distribusi", "Kegiatan Ekspor"],
+                    answer: 0,
+                    summary: "Berbelanja kebutuhan harian untuk digunakan adalah wujud dari kegiatan konsumsi."
+                },
+                {
+                    q: "Kegiatan menyalurkan barang hasil produksi dari produsen kepada konsumen dinamakan...",
+                    options: ["Distribusi", "Produksi", "Konsumsi", "Barter"],
+                    answer: 0,
+                    summary: "Distribusi berfungsi menjembatani jarak antara pembuat barang (produsen) dan pembeli (konsumen)."
+                },
+                {
+                    svgKey: "truk_distribusi",
+                    q: "Armada truk angkutan barang pada gambar di atas berperan penting dalam kegiatan...",
+                    options: ["Distribusi Barang", "Produksi Massal", "Konsumsi Rumah Tangga", "Penghematan Energi"],
+                    answer: 0,
+                    summary: "Truk pengangkut adalah sarana transportasi pendukung utama dalam proses distribusi barang."
+                },
+                {
+                    q: "Tempat bertemunya penjual dan pembeli untuk melakukan transaksi jual beli barang atau jasa disebut...",
+                    options: ["Pasar", "Pabrik", "Gudang", "Terminal"],
+                    answer: 0,
+                    summary: "Pasar adalah sarana atau wadah bertemunya penawaran (penjual) dan permintaan (pembeli)."
+                }
+            ],
+
+            menengah: [ // ⭐⭐ LEVEL 2: MENENGAH (Factors of Production, Distribution Channels, Priority Scale)
+                {
+                    q: "Faktor produksi yang berasal dari kemampuan seseorang dalam mengelola dan memimpin usaha dinamakan...",
+                    options: ["Faktor Kewirausahaan (Entrepreneurship)", "Faktor Modal", "Faktor Tenaga Kerja", "Faktor Alam"],
+                    answer: 0,
+                    summary: "Kewirausahaan adalah keahlian menyatukan faktor alam, tenaga kerja, dan modal agar produksi berjalan lancar."
+                },
+                {
+                    svgKey: "skala_prioritas",
+                    q: "Berdasarkan piramida gambar di atas, kebutuhan mendasar yang harus dipenuhi terlebih dahulu seperti makanan, pakaian, dan rumah disebut...",
+                    options: ["Kebutuhan Primer", "Kebutuhan Sekunder", "Kebutuhan Tersier", "Kebutuhan Mewah"],
+                    answer: 0,
+                    summary: "Kebutuhan primer adalah kebutuhan paling dasar manusia yang wajib dipenuhi demi kelangsungan hidup."
+                },
+                {
+                    q: "Seorang petani menjual hasil panen berasnya secara langsung kepada tetangga di desanya tanpa perantara. Ini contoh saluran...",
+                    options: ["Distribusi Langsung", "Distribusi Tidak Langsung", "Distribusi Semi Langsung", "Distribusi Internasional"],
+                    answer: 0,
+                    summary: "Distribusi langsung terjadi ketika produsen menjual barangnya secara mendadak/langsung ke konsumen."
+                },
+                {
+                    svgKey: "kurir_ecommerce",
+                    q: "Sistem penjualan barang secara daring melalui aplikasi ponsel lalu dikirim lewat jasa kurir ekspres dinamakan...",
+                    options: ["Distribusi Digital (E-Commerce)", "Barter Konvensional", "Pasar Apung", "Distribusi Monopolistik"],
+                    answer: 0,
+                    summary: "Penggunaan platform marketplace dan pengiriman kurir merupakan bentuk modern distribusi digital."
+                },
+                {
+                    q: "Tenaga kerja yang memerlukan pendidikan formal terlebih dahulu seperti dokter, guru, dan akuntan tergolong...",
+                    options: ["Tenaga Kerja Terdidik", "Tenaga Kerja Terlatih", "Tenaga Kerja Tidak Terdidik", "Tenaga Kerja Kasar"],
+                    answer: 0,
+                    summary: "Tenaga kerja terdidik memperoleh keahliannya lewat jalur pendidikan tinggi resmi."
+                },
+                {
+                    svgKey: "pertanian_primer",
+                    q: "Lahan tanah yang subur, air, dan sinar matahari pada gambar pertanian tergolong ke dalam faktor produksi...",
+                    options: ["Faktor Produksi Alam", "Faktor Produksi Modal", "Faktor Produksi Turunan", "Faktor Kewirausahaan"],
+                    answer: 0,
+                    summary: "Faktor produksi alam meliputi semua kekayaan alam yang disediakan oleh lingkungan."
+                },
+                {
+                    q: "Urutan daftar kebutuhan manusia yang disusun berdasarkan tingkat kepentingan paling mendesak dinamakan...",
+                    options: ["Skala Prioritas", "Skala Ekonomi", "Daftar Belanja Mewah", "Rencana Investasi"],
+                    answer: 0,
+                    summary: "Skala prioritas membantu seseorang menentukan barang apa yang harus dibeli lebih awal sesuai anggaran."
+                }
+            ],
+
+            mahir: [ // ⭐⭐⭐ LEVEL 3: MAHIR (Supply & Demand Curves, Market Equilibrium, Modern Commerce)
+                {
+                    q: "Sesuai Hukum Permintaan, apabila harga suatu barang mengalami kenaikan, maka jumlah barang yang diminta pembeli akan...",
+                    options: ["Menurun (Berkurang)", "Meningkat Tajam", "Tetap Stabil", "Menjadi Nol"],
+                    answer: 0,
+                    summary: "Hukum permintaan berbunyi: Jika harga naik maka jumlah barang yang diminta turun, dan sebaliknya."
+                },
+                {
+                    svgKey: "kurva_pasar",
+                    q: "Pada diagram kurva di atas, titik potong antara kurva permintaan (D) dan penawaran (S) dinamakan...",
+                    options: ["Harga Keseimbangan (Titik E)", "Harga Tertinggi", "Garis Inflasi", "Batas Maksimum Produksi"],
+                    answer: 0,
+                    summary: "Equilibrium Price (Titik E) adalah harga kesepakatan saat jumlah barang yang diminta sama dengan yang ditawarkan."
+                },
+                {
+                    q: "Sesuai Hukum Penawaran, apabila harga suatu barang di pasar meningkat, tindakan yang akan dilakukan oleh pedagang/produsen adalah...",
+                    options: ["Menambah jumlah barang yang ditawarkan", "Mengurangi jumlah produk di toko", "Hentikan produksi sementara", "Menurunkan kualitas barang"],
+                    answer: 0,
+                    summary: "Hukum penawaran berbunyi: Jika harga naik, produsen terdorong menawarkan lebih banyak barang untuk keuntungan."
+                },
+                {
+                    svgKey: "timbangan_harga",
+                    q: "Proses tawar-menawar antara penjual dan pembeli pada gambar di atas bertujuan untuk mencapai...",
+                    options: ["Kesepakatan Harga Pasar (Keseimbangan)", "Monopoli Perdagangan", "Kerugian Konsumen", "Penghentian Distribusi"],
+                    answer: 0,
+                    summary: "Proses tawar-menawar menghasilkan harga kesepakatan bersama yang disetujui penjual dan pembeli."
+                },
+                {
+                    q: "Pasar abstrak adalah jenis pasar di mana penjual dan pembeli tidak bertemu langsung secara fisik. Contoh pasar abstrak adalah...",
+                    options: ["Toko Online / Marketplace Internet", "Pasar Tradisional Desa", "Pasar Kaget Minggu Pagi", "Toko Kelontong"],
+                    answer: 0,
+                    summary: "Pasar abstrak (seperti toko online dan bursa efek) tidak mengharuskan perjumpaan fisik antara pembeli dan penjual."
+                },
+                {
+                    q: "salah satu dampak positif berkembangnya teknologi e-commerce bagi produsen kecil (UMKM) adalah...",
+                    options: ["Memperluas jangkauan pemasaran hingga ke seluruh wilayah tanpa toko fisik", "Menghilangkan biaya kemasan produk", "Mewajibkan penjualan barang impor", "Menurunkan harga bahan baku secara otomatis"],
+                    answer: 0,
+                    summary: "E-Commerce memangkas batas wilayah sehingga UMKM lokal bisa menjual produknya ke mana saja."
+                }
+            ]
+        };
+    </script>
+
+    <script>
+        /* Game State Variables */
+        let currentTopic = 'produksi'; 
+        let currentLevel = 'pemula'; 
+        let gameMode = 'vs'; 
+        let isGameActive = false;
+        let aiInterval = null;
+
+        const WINNING_SCORE = 7;
+
+        let player1 = { score: 0, questionIndex: 0, questions: [] };
+        let player2 = { score: 0, questionIndex: 0, questions: [] };
+
+        /* Web Audio API Sound Synthesizer */
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+        }
+
+        function playSound(type) {
+            try {
+                initAudio();
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                const now = audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(560, now);
+                    osc.frequency.exponentialRampToValueAtTime(920, now + 0.04);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.04);
+                    osc.start(now);
+                    osc.stop(now + 0.04);
+                } else if (type === 'correct') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.08);
+                    osc.frequency.setValueAtTime(783.99, now + 0.16);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now); 
+                    osc.frequency.setValueAtTime(160, now + 0.08);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
+                    osc.start(now);
+                    osc.stop(now + 0.22);
+                } else if (type === 'win') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.1);
+                    osc.frequency.setValueAtTime(783.99, now + 0.2);
+                    osc.frequency.setValueAtTime(1046.50, now + 0.32);
+                    gain.gain.setValueAtTime(0.22, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.55);
+                    osc.start(now);
+                    osc.stop(now + 0.55);
+                }
+            } catch (e) {
+                // Audio fallback for autoplay policies
+            }
+        }
+
+        /* Screen Navigation Handler */
+        function showScreen(screenId) {
+            playSound('click');
+            document.getElementById('screen-operation').classList.add('hidden');
+            document.getElementById('screen-level').classList.add('hidden');
+            document.getElementById('screen-gameplay').classList.add('hidden');
+            document.getElementById('screen-winner').classList.add('hidden');
+
+            document.getElementById(screenId).classList.remove('hidden');
+
+            if (screenId === 'screen-operation') {
+                clearInterval(aiInterval);
+                isGameActive = false;
+            }
+        }
+
+        /* Mode Selection Handler */
+        function setPlayMode(mode) {
+            playSound('click');
+            gameMode = mode;
+            const btnVs = document.getElementById('btn-mode-vs');
+            const btnAi = document.getElementById('btn-mode-ai');
+
+            if (mode === 'vs') {
+                btnVs.className = "flex-1 py-2 px-4 rounded-xl font-black text-xs md:text-sm transition-all bg-gradient-to-r from-amber-300 to-emerald-400 text-slate-900 shadow-md";
+                btnAi.className = "flex-1 py-2 px-4 rounded-xl font-bold text-xs md:text-sm transition-all text-slate-500 hover:text-slate-800";
+            } else {
+                btnAi.className = "flex-1 py-2 px-4 rounded-xl font-black text-xs md:text-sm transition-all bg-gradient-to-r from-amber-300 to-emerald-400 text-slate-900 shadow-md";
+                btnVs.className = "flex-1 py-2 px-4 rounded-xl font-bold text-xs md:text-sm transition-all text-slate-500 hover:text-slate-800";
+            }
+        }
+
+        /* Topic Selection Handler */
+        function selectTopic(topic) {
+            currentTopic = topic;
+            const labels = {
+                'produksi': '1. Kegiatan Produksi 🏭',
+                'distribusi': '2. Kegiatan Distribusi 🚚',
+                'konsumsi': '3. Kegiatan Konsumsi 🛍️',
+                'pasar': '4. Pasar & Harga Keseimbangan ⚖️',
+                'campuran': '5. Semua Materi Ekonomi 💼'
+            };
+            document.getElementById('selected-op-label').innerText = labels[topic];
+            showScreen('screen-level');
+        }
+
+        /* Level Selection Handler */
+        function selectLevel(level) {
+            currentLevel = level;
+            const topicNames = {
+                'produksi': 'Kegiatan Produksi',
+                'distribusi': 'Kegiatan Distribusi',
+                'konsumsi': 'Kegiatan Konsumsi',
+                'pasar': 'Pasar & Harga Keseimbangan',
+                'campuran': 'Semua Materi Ekonomi'
+            };
+            const levelNames = { 'pemula': 'Pemula (1⭐)', 'menengah': 'Menengah (2⭐⭐)', 'mahir': 'Mahir (3⭐⭐⭐)' };
+            
+            document.getElementById('game-info-text').innerText = `${topicNames[currentTopic]} - ${levelNames[level]} (${gameMode === 'ai' ? 'vs AI' : '2 Pemain'})`;
+            
+            // Configure Player 2 UI for Bot AI mode
+            if (gameMode === 'ai') {
+                document.getElementById('p2-name-label').innerText = "Bot AI Komputer";
+                document.getElementById('p2-avatar-icon').innerText = "🤖";
+                document.getElementById('climber-2-label').innerText = "BOT";
+                document.getElementById('p2-options-container').style.opacity = "0.35";
+                document.getElementById('p2-options-container').style.pointerEvents = "none";
+            } else {
+                document.getElementById('p2-name-label').innerText = "Pemain 2 (Biru)";
+                document.getElementById('p2-avatar-icon').innerText = "🎒";
+                document.getElementById('climber-2-label').innerText = "P2";
+                document.getElementById('p2-options-container').style.opacity = "1";
+                document.getElementById('p2-options-container').style.pointerEvents = "auto";
+            }
+
+            startGame();
+        }
+
+        /* Filter Questions Based on Selected Topic & Level */
+        function getLevelQuestions() {
+            let pool = [];
+
+            if (currentTopic === 'campuran') {
+                pool = [...QUESTION_LEVELS[currentLevel]];
+            } else {
+                pool = QUESTION_LEVELS[currentLevel];
+            }
+
+            // Always ensure fallback questions if pool size is small
+            if (pool.length < 7) {
+                const allQuestions = [...QUESTION_LEVELS.pemula, ...QUESTION_LEVELS.menengah, ...QUESTION_LEVELS.mahir];
+                pool = [...allQuestions];
+            }
+
+            return pool.sort(() => Math.random() - 0.5);
+        }
+
+        /* Start Game State Initialization */
+        function startGame() {
+            player1.score = 0;
+            player1.questionIndex = 0;
+            player1.questions = getLevelQuestions();
+
+            player2.score = 0;
+            player2.questionIndex = 0;
+            player2.questions = getLevelQuestions();
+
+            isGameActive = true;
+            clearInterval(aiInterval);
+
+            updateScoreUI();
+            updateClimberPosition();
+            
+            renderQuestion(1);
+            renderQuestion(2);
+
+            showScreen('screen-gameplay');
+
+            if (gameMode === 'ai') {
+                startAILogic();
+            }
+        }
+
+        function resetGame() {
+            startGame();
+        }
+
+        function renderQuestion(pNum) {
+            const p = pNum === 1 ? player1 : player2;
+            const qObj = p.questions[p.questionIndex % p.questions.length];
+            
+            const qBoxEl = document.getElementById(`p${pNum}-question`);
+            const imgContainer = document.getElementById(`p${pNum}-img-container`);
+            const badgeEl = document.getElementById(`p${pNum}-badge-type`);
+
+            qBoxEl.innerText = qObj.q;
+
+            // Handle SVG Image "Tebak Gambar" Render
+            if (qObj.svgKey && SVG_ASSETS[qObj.svgKey]) {
+                imgContainer.innerHTML = SVG_ASSETS[qObj.svgKey];
+                imgContainer.classList.remove('hidden');
+                badgeEl.innerText = "🖼️ Tebak Gambar";
+                badgeEl.className = "bg-amber-100 text-amber-800 border border-amber-300 px-2.5 py-0.5 rounded-full text-[9px] font-extrabold";
+            } else {
+                imgContainer.innerHTML = '';
+                imgContainer.classList.add('hidden');
+                badgeEl.innerText = "📖 Konsep Ekonomi VII";
+                badgeEl.className = "bg-emerald-100 text-emerald-800 border border-emerald-300 px-2.5 py-0.5 rounded-full text-[9px] font-extrabold";
+            }
+
+            const container = document.getElementById(`p${pNum}-options-container`);
+            container.innerHTML = '';
+
+            let optionList = qObj.options.map((optText, index) => ({
+                text: optText,
+                isCorrect: index === qObj.answer
+            }));
+
+            let shuffledOptions = [...optionList].sort(() => Math.random() - 0.5);
+
+            const letterTags = ['A', 'B', 'C', 'D'];
+            shuffledOptions.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `btn-press text-left p-2.5 rounded-2xl font-bold text-xs border-2 border-slate-200 transition-all flex items-start gap-2 bg-white/95 hover:bg-slate-50 text-slate-800 shadow-sm ${
+                    pNum === 1 ? 'hover:border-rose-400' : 'hover:border-sky-400'
+                }`;
+                btn.onclick = () => handleAnswerSubmit(pNum, opt.isCorrect);
+
+                btn.innerHTML = `
+                    <span class="w-5 h-5 rounded-lg ${pNum === 1 ? 'bg-rose-500' : 'bg-sky-500'} text-white font-black flex items-center justify-center shrink-0 text-[10px] shadow-xs mt-0.5">${letterTags[idx]}</span>
+                    <span class="leading-snug">${opt.text}</span>
+                `;
+                container.appendChild(btn);
+            });
+        }
+
+        function handleAnswerSubmit(playerNum, isCorrect) {
+            if (!isGameActive) return;
+
+            const p = playerNum === 1 ? player1 : player2;
+            const cardEl = document.getElementById(`p${playerNum}-card`);
+
+            if (isCorrect) {
+                playSound('correct');
+                p.score++;
+                updateScoreUI();
+                updateClimberPosition();
+
+                cardEl.classList.remove('wiggle');
+                void cardEl.offsetWidth; // trigger reflow
+                cardEl.classList.add('bounce-up');
+
+                if (p.score >= WINNING_SCORE) {
+                    handleWin(playerNum);
+                    return;
+                }
+
+                p.questionIndex++;
+                renderQuestion(playerNum);
+            } else {
+                playSound('wrong');
+                cardEl.classList.remove('bounce-up');
+                void cardEl.offsetWidth; // trigger reflow
+                cardEl.classList.add('wiggle');
+
+                p.questionIndex++;
+                renderQuestion(playerNum);
+            }
+        }
+
+        /* Bot AI Simulated Climbing Logic */
+        function startAILogic() {
+            let speed = 4600;
+            if (currentLevel === 'menengah') speed = 3500;
+            if (currentLevel === 'mahir') speed = 2500;
+
+            aiInterval = setInterval(() => {
+                if (!isGameActive) return;
+
+                player2.score++;
+                playSound('correct');
+                updateScoreUI();
+                updateClimberPosition();
+
+                if (player2.score >= WINNING_SCORE) {
+                    handleWin(2);
+                    return;
+                }
+
+                player2.questionIndex++;
+                renderQuestion(2);
+            }, speed);
+        }
+
+        function updateScoreUI() {
+            document.getElementById('p1-score-tag').innerText = `Panjat: ${player1.score}/${WINNING_SCORE}`;
+            document.getElementById('p2-score-tag').innerText = `Panjat: ${player2.score}/${WINNING_SCORE}`;
+        }
+
+        function updateClimberPosition() {
+            const p1Percent = (player1.score / WINNING_SCORE) * 82;
+            const p2Percent = (player2.score / WINNING_SCORE) * 82;
+
+            document.getElementById('climber-1').style.bottom = `${p1Percent}%`;
+            document.getElementById('climber-2').style.bottom = `${p2Percent}%`;
+        }
+
+        function handleWin(winnerNum) {
+            isGameActive = false;
+            clearInterval(aiInterval);
+            playSound('win');
+
+            let winnerText = "";
+            if (winnerNum === 1) {
+                winnerText = "Pemain 1 (Merah) Menang! 🏆";
+            } else {
+                winnerText = gameMode === 'ai' ? "Bot AI Komputer Menang! 🤖" : "Pemain 2 (Biru) Menang! 🏆";
+            }
+
+            document.getElementById('winner-announcement').innerText = winnerText;
+
+            const winningPlayer = winnerNum === 1 ? player1 : player2;
+            const lastQ = winningPlayer.questions[winningPlayer.questionIndex % winningPlayer.questions.length];
+            if (lastQ && lastQ.summary) {
+                document.getElementById('educational-summary').innerText = lastQ.summary;
+            }
+
+            document.getElementById('screen-winner').classList.remove('hidden');
+
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 180,
+                    spread: 120,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
